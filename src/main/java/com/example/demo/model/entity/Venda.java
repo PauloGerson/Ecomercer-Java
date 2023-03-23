@@ -15,8 +15,12 @@ public class Venda implements Serializable {
     @Id
     private Long id;
     private LocalDate date;
+
+    @ManyToOne
+    private Pessoa pessoa;
     @OneToMany(mappedBy = "venda")
     private List<ItemVenda> venda  =  new ArrayList<>();
+
 
     public Long getId() {
         return id;
@@ -50,5 +54,13 @@ public class Venda implements Serializable {
         }
 
         return somaValor;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

@@ -30,4 +30,9 @@ public class VendaController {
         return new ModelAndView("vendas/list", model);
    }
 
+   public ModelAndView listarPessoa(ModelMap model){
+       model.addAttribute("pessoa", repository.buscarPessoa());
+       return  new ModelAndView("vendas/list");
+   }
+
 }
