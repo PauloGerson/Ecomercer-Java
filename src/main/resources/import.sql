@@ -1,5 +1,6 @@
-insert into produto (id,nome,valor) values (1,'feijão', 13);
-insert into produto (id,nome,valor) values (2,'arroz', 23);
+insert into produto (id,nome,valor) values (default,'feijão', 13);
+insert into produto (id,nome,valor) values (default,'arroz', 23);
+insert into produto (id,nome,valor) values (default,'Bolacha', 5);
 
 insert into pessoa_fisica (id, nome,cpf) values (1, 'Paulo Gerson', '40028922');
 
