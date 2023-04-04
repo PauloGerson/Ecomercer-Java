@@ -5,6 +5,7 @@ import com.example.demo.model.entity.Produto;
 import com.example.demo.model.repository.ProdutoRepository;
 import com.example.demo.model.repository.VendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Transactional
 @Controller
+
 @RequestMapping("vendas")
 public class VendaController {
 
@@ -30,9 +32,6 @@ public class VendaController {
         return new ModelAndView("vendas/list", model);
    }
 
-   /*public ModelAndView listarPessoa(ModelMap model){
-       model.addAttribute("pessoa", repository.buscarPessoa());
-       return  new ModelAndView("vendas/list");
-   } */
+
 
 }

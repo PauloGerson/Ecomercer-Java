@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 
+import java.util.Scanner;
+
 @Transactional
 @Controller
 @RequestMapping("produtos")
@@ -34,6 +36,7 @@ public class ProdutoController {
     @GetMapping ("/search")
     public ModelAndView buscar(ModelMap model , @RequestParam("id") Long id){
         model.addAttribute("produtos", repository.produto(id));
+
         return new ModelAndView("produtos/list", model);
     }
 
