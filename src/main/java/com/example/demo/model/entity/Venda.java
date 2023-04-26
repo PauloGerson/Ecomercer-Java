@@ -1,6 +1,8 @@
 package com.example.demo.model.entity;
 
 import com.example.demo.model.entity.*;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@Scope("session")
+@Component
 @Entity
 public class Venda implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)//auto incremento

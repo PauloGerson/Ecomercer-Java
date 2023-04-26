@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-bt" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho</title>
+
+
+</head>
+
+<body>
+
+<div class="conteiner">
+  <main>
+    <table class="tab">
+
+      <thead>
+
+      <tr>
+        <th> Produto</th>
+        <th> Valor</th>
+        <th>Quantidade</th>
+        <th>Total</th>
+        <th>Excluir</th>
+      </tr>
+      </thead>
+
+
+      <tr th:each="i,posicao : ${session.venda.itemVenda}">
+
+
+
+        <td th:text="${i.produto.nome}"></td>
+
+        <td th:text="${i.produto.valor}"></td>
+
+        <td th:text="${i.qtd}"></td>
+
+        <td th:text="${i.totalItem}"></td>
+
+        <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"
+                th:href="@{/vendas/delete/{id}(id=${posicao.index})}">Excluir</a> </td>
+
+      </tr>
+
+    </table>
+
+  </main>
+
+</div>
+
+</body>
+
+</html>

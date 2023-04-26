@@ -20,9 +20,6 @@ public class VendaRepository {
         return query.getResultList();
     }
 
-    /*public Pessoa buscarPessoa(){
-        Query query = em.createQuery("from Pessoa ");
-        return (Pessoa) query.getResultList();
-    }*/
+
 
 }
