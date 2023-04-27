@@ -1,6 +1,5 @@
 package com.example.demo.model.entity;
 
-import com.example.demo.model.entity.*;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +22,7 @@ public class Venda implements Serializable {
     @ManyToOne
     private Pessoa pessoa;
     @OneToMany(mappedBy = "venda")
-    private List<ItemVenda> venda  =  new ArrayList<>();
+    private List<ItemVenda> itens =  new ArrayList<>();
 
 
     public Long getId() {
@@ -42,18 +41,18 @@ public class Venda implements Serializable {
         this.date = date;
     }
 
-    public List<ItemVenda> getVenda() {
-        return venda;
+    public List<ItemVenda> getItens() {
+        return itens;
     }
 
-    public void setVenda(List<ItemVenda> venda) {
-        this.venda = venda;
+    public void setItens(List<ItemVenda> venda) {
+        this.itens = venda;
     }
 
     public double total(){
         double somaValor  = 0;
 
-        for(ItemVenda i : venda){
+        for(ItemVenda i : itens){
             somaValor = somaValor + i.total();
         }
 

@@ -30,7 +30,11 @@ public class ItemVenda implements Serializable{
     private Venda venda;
 
     public Long getId() {
-        return id;
+        if (this.produto != null) {
+            return this.produto.getId();
+        } else {
+            return null;
+        }
     }
 
     public void setId(Long id) {

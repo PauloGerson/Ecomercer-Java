@@ -23,29 +23,27 @@ import javax.transaction.Transactional;
 @RequestMapping("vendas")
 public class VendaController {
 
-   @Autowired
+    @Autowired
     VendaRepository repository;
-
-
-   @Autowired
+    @Autowired
     Venda venda;
 
-   @Autowired
-   ProdutoRepository produtoRepository;
-   @GetMapping("/list")
+    @Autowired
+    ProdutoRepository produtoRepository;
 
-    public  ModelAndView listar(ModelMap model){
+    @GetMapping("/list")
+
+    public ModelAndView listar(ModelMap model) {
         model.addAttribute("vendas", repository.buscarVendas());
         return new ModelAndView("vendas/list", model);
-   }
+    }
 
     @GetMapping("/carrinho")
     public String carrinho(Venda venda) {
 
-        return "carrinho/carrinho";
+        return "carrinho/list";
 
     }
-
 
 
     @PostMapping("/add")
@@ -56,12 +54,14 @@ public class VendaController {
 
         Produto produto = produtoRepository.produto(itemVenda.getProduto().getId());
 
-        itemVenda.setProduto(produto);
-        
-        venda.getVenda().add(itemVenda);
 
+        itemVenda.setProduto(produto);
+
+        venda.getItens().add(itemVenda);
 
         return new ModelAndView("redirect:/vendas/carrinho");
+
     }
 
+    //para remover vou fazer um vendas.getItens.Remove(
 }

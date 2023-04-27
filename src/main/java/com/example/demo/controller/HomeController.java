@@ -21,7 +21,7 @@ public class HomeController {
 
 
     @GetMapping("/list")
-    public ModelAndView listar(ModelMap model) {
+    public ModelAndView listar(ItemVenda itemVenda, ModelMap model) {
         model.addAttribute("produtos", repository.buscarProdutos());
         return new ModelAndView("home", model);
     }

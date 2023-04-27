@@ -28,9 +28,7 @@
       </thead>
 
 
-      <tr th:each="i,posicao : ${session.venda.itemVenda}">
-
-
+      <tr th:each="i,posicao : ${session.venda.itens}">
 
         <td th:text="${i.produto.nome}"></td>
 
@@ -38,7 +36,7 @@
 
         <td th:text="${i.qtd}"></td>
 
-        <td th:text="${i.totalItem}"></td>
+        <td th:text="${i.total}"></td>
 
         <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"
                 th:href="@{/vendas/delete/{id}(id=${posicao.index})}">Excluir</a> </td>

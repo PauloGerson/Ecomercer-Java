@@ -20,6 +20,18 @@ public class VendaRepository {
         return query.getResultList();
     }
 
+    public Venda venda(Long id) {
+        return em.find(Venda.class, id);
+    }
+
+    public void save(Venda venda) {
+        em.persist(venda);
+    }
+
+    public void update(Venda venda){
+        em.merge(venda);
+    }
+
 
 
 }
