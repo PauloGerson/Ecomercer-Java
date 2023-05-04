@@ -16,7 +16,7 @@ public class VendaRepository {
     private EntityManager em;
 
     public List<Venda> buscarVendas(){
-        Query query =  em.createQuery("from Venda ");
+        Query query =  em.createQuery("from Venda");
         return query.getResultList();
     }
 

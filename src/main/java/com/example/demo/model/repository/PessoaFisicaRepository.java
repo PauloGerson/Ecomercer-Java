@@ -1,7 +1,7 @@
 package com.example.demo.model.repository;
 
+import com.example.demo.model.entity.Pessoa;
 import com.example.demo.model.entity.PessoaFisica;
-import com.example.demo.model.entity.Produto;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -15,8 +15,12 @@ public class PessoaFisicaRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public List<PessoaFisica> buscarProdutos(){
-        Query query = em.createQuery("from Produto ");
+    public List<PessoaFisica> buscarPessoas(){
+        Query query = em.createQuery("from PessoaFisica ");
         return query.getResultList();
+    }
+
+    public PessoaFisica pessoa(Long id){
+        return em.find(PessoaFisica.class,id);
     }
 }

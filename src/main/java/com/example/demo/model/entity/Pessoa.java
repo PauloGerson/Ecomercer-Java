@@ -1,6 +1,7 @@
 package com.example.demo.model.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Component
 public abstract class  Pessoa implements Serializable {
 
     @Id

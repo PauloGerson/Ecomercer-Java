@@ -17,11 +17,11 @@ public class Venda implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)//auto incremento
     @Id
     private Long id;
-    private LocalDate date;
+    private LocalDate date = LocalDate.now();
 
     @ManyToOne
     private Pessoa pessoa;
-    @OneToMany(mappedBy = "venda")
+    @OneToMany(mappedBy = "venda",cascade = CascadeType.PERSIST)
     private List<ItemVenda> itens =  new ArrayList<>();
 
 
@@ -60,6 +60,7 @@ public class Venda implements Serializable {
     }
 
     public Pessoa getPessoa() {
+
         return pessoa;
     }
 

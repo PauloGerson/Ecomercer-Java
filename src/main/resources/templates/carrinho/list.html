@@ -28,7 +28,7 @@
       </thead>
 
 
-      <tr th:each="i,posicao : ${session.venda.itens}">
+      <tr th:each="i : ${session.venda.itens}">
 
         <td th:text="${i.produto.nome}"></td>
 
@@ -39,9 +39,10 @@
         <td th:text="${i.total}"></td>
 
         <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"
-                th:href="@{/vendas/delete/{id}(id=${posicao.index})}">Excluir</a> </td>
-
+                th:href="@{/vendas/delete/{id}(id=${i.produto.id})}">Excluir</a> </td>
       </tr>
+
+      <a type="button" th:href="@{/vendas/save}" >Finalizar vendar</a>
 
     </table>
 

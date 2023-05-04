@@ -5,6 +5,7 @@
 package com.example.demo.model.entity;
 import com.example.demo.model.entity.Produto;
 import com.example.demo.model.entity.Venda;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +16,6 @@ import java.io.Serializable;
  * @author User
  */
 @Entity
-
 public class ItemVenda implements Serializable{
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)

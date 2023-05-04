@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.entity.ItemVenda;
+import com.example.demo.model.entity.Pessoa;
 import com.example.demo.model.entity.Produto;
 import com.example.demo.model.entity.Venda;
+import com.example.demo.model.repository.PessoaFisicaRepository;
 import com.example.demo.model.repository.ProdutoRepository;
 import com.example.demo.model.repository.VendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +34,9 @@ public class VendaController {
     @Autowired
     ProdutoRepository produtoRepository;
 
+    @Autowired
+    PessoaFisicaRepository pessoaFisicaRepository;
+
     @GetMapping("/list")
 
     public ModelAndView listar(ModelMap model) {
@@ -45,23 +51,38 @@ public class VendaController {
 
     }
 
-
     @PostMapping("/add")
     public ModelAndView add(ItemVenda itemVenda) {
         if (venda == null) {
             throw new NullPointerException("Não foi possivel ");
         }
-
         Produto produto = produtoRepository.produto(itemVenda.getProduto().getId());
 
-
         itemVenda.setProduto(produto);
-
+        itemVenda.setVenda(venda);
         venda.getItens().add(itemVenda);
-
         return new ModelAndView("redirect:/vendas/carrinho");
 
     }
 
-    //para remover vou fazer um vendas.getItens.Remove(
+    @GetMapping("/delete/{id}")
+    public ModelAndView remove(@PathVariable("id") Long id){
+        for (ItemVenda item : venda.getItens()) {
+            if (item.getId().equals(id)) {
+                venda.getItens().remove(item);
+                break;
+            }
+        }
+        return new ModelAndView("redirect:/vendas/carrinho");
+    }
+
+    @GetMapping("/save")
+    public ModelAndView save(){
+        venda.setId(null);
+        Pessoa p = pessoaFisicaRepository.pessoa(1L);
+        venda.setPessoa(p);
+        repository.save(venda);
+        venda.getItens().clear();
+        return new ModelAndView("redirect:/vendas/list");
+    }
 }
