@@ -85,4 +85,13 @@ public class VendaController {
         venda.getItens().clear();
         return new ModelAndView("redirect:/vendas/list");
     }
+
+    @GetMapping("/itens/{id}")
+    public ModelAndView getItensVenda(@PathVariable("id") Long id, ModelMap model) {
+        model.addAttribute("venda", repository.venda(id));
+        return new ModelAndView("vendas/detalhes", model);
+    }
+
+
+
 }
