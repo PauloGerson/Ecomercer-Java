@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-bt" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrinho</title>
-
-
-</head>
-
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::head}"></head>
 <body>
 
-<div class="conteiner">
-  <main>
-    <table class="tab">
+<nav th:replace="~{fragments/header::header}"></nav>
+
+<div class="d-flex justify-content-center">
+
+    <table class="table" border="1" style="width: 60%; margin-top: 10rem">
 
       <thead>
 
@@ -23,7 +16,8 @@
         <th> Valor</th>
         <th>Quantidade</th>
         <th>Total</th>
-        <th>Excluir</th>
+        <th></th>
+        <th></th>
       </tr>
       </thead>
 
@@ -38,17 +32,22 @@
 
         <td th:text="${i.total}"></td>
 
-        <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"
+        <td> <a class="btn btn-danger" onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"
                 th:href="@{/vendas/delete/{id}(id=${i.produto.id})}">Excluir</a> </td>
-      </tr>
 
-      <a type="button" th:href="@{/vendas/save}" >Finalizar vendar</a>
+
+      </tr>
+      <td> <a class="btn btn-primary" type="button" th:href="@{/vendas/save}" >Finalizar vendar</a> </td>
+
 
     </table>
 
-  </main>
+
 
 </div>
+<script>
+  document.title = "Carrinho"
+</script>
 
 </body>
 

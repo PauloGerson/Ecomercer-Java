@@ -5,17 +5,24 @@
 
 <nav th:replace="~{fragments/header::header}"></nav>
 
-<div class="container">
-  <h1>FORM</h1>
+<div class="container d-flex flex-column justify-content-center" style="width: 100%; margin-top: 10rem" >
+  <h1>Cadastro de produto</h1>
   <form th:action="${produto.id == null} ? @{/produtos/save} : @{/produtos/update}" th:object="${produto}" method="post">
-    <input type="hidden" th:field="*{id}" >
-    <input type="text" th:field="*{nome}"  placeholder="Nome">
-    <input type="text" th:field="*{valor}" placeholder="valor">
+    <input class="form-control" type="hidden" th:field="*{id}" >
 
-    <input type="submit" value="Enviar">
+    <div class="mb-3">
+      <label class="form-label">Nome do produto</label>
+      <input class="form-control" type="text" th:field="*{nome}"  placeholder="Nome">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Valor do produto</label>
+      <input class="form-control" type="text" th:field="*{valor}" placeholder="valor">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Enviar">
   </form>
 
-  <button> <a th:href="@{/pessoas/list}"> Voltar</a> </button>
+
 
 </div>
 <footer th:replace="~{fragments/footer::footer}"></footer>
