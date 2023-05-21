@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>demo2</name>
 
-    <description>Projeto para a materia de programação para web 2</description>
+    <description>Projeto para a materia de programação para web 2(E-comerce)</description>
 
     <properties>
         <java.version>17</java.version>
