@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{fragments/layout :: layout(~{::head} , ~{::main})}">
 
-<head th:replace="~{fragments/head::head}">
-    <title>Home</title>
+<head th:replace="fragments/head :: head(~{})">
+
+
 </head>
+
 <body>
 
-<nav th:replace="~{fragments/header::header}"></nav>
 
+<main>
 <div class="d-flex justify-content-center" style="width: 100%">
 <table class="table" border="1" style="width: 50%; margin-top: 10rem">
     <thead>
@@ -31,10 +33,11 @@
 </table>
 </div>
 
-<footer th:replace="~{fragments/footer::footer}"></footer>
+</main>
 <script>
     document.title = "Home"
 </script>
+
 </body>
 
 </html>
