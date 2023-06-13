@@ -20,7 +20,7 @@ public class HomeController {
     ProdutoRepository repository;
 
 
-    @GetMapping("/list")
+    @GetMapping("/")
     public ModelAndView listar(ItemVenda itemVenda, ModelMap model) {
         model.addAttribute("produtos", repository.buscarProdutos());
         return new ModelAndView("home", model);

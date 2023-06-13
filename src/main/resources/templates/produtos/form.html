@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head::head}"></head>
+<html th:replace="~{fragments/layout :: layout(~{::head} , ~{::main})}">
+
+<head th:replace="fragments/head :: head(~{})">
+
+
+</head>
 <body>
 
-<nav th:replace="~{fragments/header::header}"></nav>
+<main>
 
 <div class="container d-flex flex-column justify-content-center" style="width: 100%; margin-top: 10rem" >
   <h1>Cadastro de produto</h1>
@@ -25,6 +29,8 @@
 
 
 </div>
-<footer th:replace="~{fragments/footer::footer}"></footer>
+
+</main>
+
 </body>
 </html>
