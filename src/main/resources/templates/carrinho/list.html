@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head::head}"></head>
+<html th:replace="~{fragments/layout :: layout(~{::head} , ~{::main})}">
+
+<head th:replace="fragments/head :: head(~{})">
 <body>
 
-<nav th:replace="~{fragments/header::header}"></nav>
+<main>
 
 <div class="d-flex justify-content-center">
 
@@ -45,6 +46,7 @@
 
 
 </div>
+</main>
 <script>
   document.title = "Carrinho"
 </script>

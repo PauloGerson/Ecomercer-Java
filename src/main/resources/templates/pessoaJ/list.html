@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/layout :: layout(~{::head} , ~{::main})}">
+
+<head th:replace="fragments/head :: head(~{})">
+<body>
+
+<main>
+
+  <div class="d-flex justify-content-center">
+
+    <table class="table" border="1" style="width: 60%;margin-top: 10rem">
+      <thead>
+      <tr>
+        <th>Razão social</th>
+        <th>cnpj</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tr th:each="pj : ${pessoaJuridica}">
+        <td th:text="${pj.razaosocial}"></td>
+        <td th:text="${pj.cnpj}"> </td>
+        <td th:text="${pj.endereco}"></td>
+        <td> <a class="btn btn-info text-light" th:href="@{/pessoaJ/edit/{id} (id=${pj.id})}">Editar</a> </td>
+        <td> <a class="btn btn-danger" onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"  th:href="@{/pessoaJ/remove/{id}(id=${pj.id})}">Excluir</a> </td>
+
+
+      </tr>
+
+    </table>
+
+  </div>
+
+</main>
+
+
+<script>
+  document.title = "Lista de pessoa Juridica"
+</script>
+</body>
+</html>

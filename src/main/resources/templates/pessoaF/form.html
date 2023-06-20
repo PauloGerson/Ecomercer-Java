@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/layout :: layout(~{::head} , ~{::main})}">
+
+<head th:replace="fragments/head :: head(~{})">
+
+
+</head>
+<body>
+
+<main>
+  <div class="container d-flex flex-column justify-content-center" style="width: 100%; margin-top: 10rem" >
+    <h1>Cadastro Pessoa Fisica</h1>
+
+    <form th:action="${pessoaFisica.id == null} ? @{/pessoaF/save} : @{/pessoaF/update}"  th:object="${pessoaFisica}" method="post">
+      <input class="form-control" type="hidden" th:field="*{id}" >
+
+      <div class="mb-3">
+        <label class="form-label">Nome Completo</label>
+        <input class="form-control" type="text" th:field="*{nome}"  placeholder="Nome">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">CPF</label>
+        <input class="form-control" type="text" th:field="*{cpf}" placeholder="CPF">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input class="form-control" type="text" th:field="*{email}" placeholder="Email">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Telefone</label>
+        <input class="form-control" type="text" th:field="*{telefone}" placeholder="Telefone">
+      </div>
+
+      <div>
+        <div th:replace="~{fragments/endereco::endereco}"></div>
+      </div>
+
+      <input class="btn btn-primary" type="submit" value="Cadastrar" style="margin-top: 1rem">
+    </form>
+  </div>
+</main>
+
+</body>
+</html>

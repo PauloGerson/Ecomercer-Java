@@ -8,7 +8,16 @@ import java.io.Serializable;
 @Entity
 @Component
 public class PessoaJuridica extends Pessoa implements Serializable {
+    private String razaosocial;
     private String cnpj;
+
+    public String getRazaosocial() {
+        return razaosocial;
+    }
+
+    public void setRazaosocial(String razaosocial) {
+        this.razaosocial = razaosocial;
+    }
 
     public String getCnpj() {
         return cnpj;

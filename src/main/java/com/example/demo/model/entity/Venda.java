@@ -20,6 +20,8 @@ public class Venda implements Serializable {
     private LocalDate date = LocalDate.now();
 
     @ManyToOne
+    private Endereco endereco;
+    @ManyToOne
     private Pessoa pessoa;
     @OneToMany(mappedBy = "venda",cascade = CascadeType.PERSIST)
     private List<ItemVenda> itens =  new ArrayList<>();
