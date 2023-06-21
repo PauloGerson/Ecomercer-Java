@@ -6,8 +6,11 @@
 
 <main>
 
-<div class="d-flex justify-content-center">
 
+  <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+          data-bs-target="#pessoasModal">Selecionar
+    comprador
+  </button>
     <table class="table" border="1" style="width: 60%; margin-top: 10rem">
 
       <thead>
@@ -45,11 +48,76 @@
 
 
 
-</div>
+  <!-- The Modal -->
+  <div class="modal" id="pessoasModal">
+    <form  method="post">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Comprador</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-row">
+              <table class="table table-dark table-hover">
+                <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Selecionar</th>
+                </tr>
+                </thead>
+                <tr th:each="p : ${pessoas}">
+                  <td hidden="true" th:text="${p.id}"></td>
+                  <td th:text="${p.nome}"></td>
+                  <td>
+                    <a class="btn bg-info" th:href="@{/vendas/cart/{id}(id=${p.id})}">Selecionar</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+</form>
+  </div>
+
+  <fieldset id="enderecopessoa">
+    <div class="container mt-3">
+      <h4>Endereços</h4>
+      <label class="form-label">Selecione um endereço:</label>
+      <table  th:if="${session.venda.pessoa != null}" class="table table-dark table-hover">
+        <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Selecionar</th>
+        </tr>
+        </thead>
+        <tr th:each="e : ${session.venda.pessoa.getEndereco()}">
+          <td hidden="true" th:text="${e.id}"></td>
+          <td th:text="${e.logradouro}"></td>
+          <td>
+            <a class="btn btn-warning"
+               th:href="@{/vendas/entregar/{id}(id=${e.id})}">Selecionar</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <hr>
+    <div th:if="${session.venda.endereco != null}">
+      <h4><label>Endereço do comprador:&nbsp;</label><span class="display-6"
+                                                           th:text="${session.venda.endereco.getLogradouro()}"></span></h4>
+    </div>
+    <hr>
+  </fieldset>
+
 </main>
-<script>
-  document.title = "Carrinho"
-</script>
 
 </body>
 

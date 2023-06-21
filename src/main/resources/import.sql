@@ -2,8 +2,8 @@ insert into produto (id,nome,valor) values (default,'feijão', 13);
 insert into produto (id,nome,valor) values (default,'arroz', 23);
 insert into produto (id,nome,valor) values (default,'Bolacha', 5);
 
-insert into pessoa_fisica (id, nome,cpf) values (1, 'Paulo Gerson', '40028922');
-
+insert into pessoa_fisica (id, nome,cpf,email,telefone) values (1, 'Paulo Gerson', '40028922', 'paulog123@gmail.com','40028922');
+insert into pessoa_juridica (id,email,nome,telefone,cnpj,razaosocial) values (1,'paulo@123.com', 'Paulo Gerson', '434343434', '343434343434','Lamen')
 
 insert into  venda (id,date,pessoa_id) values (default, '2023-03-11', 1);
 

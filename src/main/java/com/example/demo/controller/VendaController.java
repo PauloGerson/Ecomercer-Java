@@ -1,12 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.entity.ItemVenda;
-import com.example.demo.model.entity.Pessoa;
-import com.example.demo.model.entity.Produto;
-import com.example.demo.model.entity.Venda;
-import com.example.demo.model.repository.PessoaFisicaRepository;
-import com.example.demo.model.repository.ProdutoRepository;
-import com.example.demo.model.repository.VendaRepository;
+import com.example.demo.model.entity.*;
+import com.example.demo.model.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -36,6 +31,12 @@ public class VendaController {
 
     @Autowired
     PessoaFisicaRepository pessoaFisicaRepository;
+
+    @Autowired
+    PessoaRepository pessoaRepository;
+
+    @Autowired
+    EnderecoRepository enderecoRepository;
 
     @GetMapping("/list")
 
@@ -78,9 +79,10 @@ public class VendaController {
 
     @GetMapping("/save")
     public ModelAndView save(){
+
         venda.setId(null);
-        Pessoa p = pessoaFisicaRepository.pessoa(1L);
-        venda.setPessoa(p);
+       /* Pessoa p = pessoaFisicaRepository.pessoa(1L);
+        venda.setPessoa(p);*/
         repository.save(venda);
         venda.getItens().clear();
         return new ModelAndView("redirect:/vendas/list");
@@ -92,6 +94,28 @@ public class VendaController {
         return new ModelAndView("vendas/detalhes", model);
     }
 
+
+
+    @GetMapping("/cart/{id}")
+    public String endereco(@PathVariable("id") Long id, ModelMap model) {
+
+        Pessoa p = pessoaRepository.pessoa(id);
+        venda.setPessoa(p);
+        model.addAttribute("endereco", p);
+        modelAddPessoa(model);
+        return "carrinho/list";
+    }
+
+    @GetMapping("/entrega/{id}")
+    public String entrega(@PathVariable Long id, ModelMap model){
+        Endereco e = enderecoRepository.endereco(id);
+        modelAddPessoa(model);
+        return "carrinho/list";
+    }
+
+    private void modelAddPessoa(ModelMap modelMap){
+        modelMap.addAttribute("pessoas", pessoaRepository.buscarPessoa());
+    }
 
 
 }

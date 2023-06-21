@@ -16,7 +16,6 @@ public class PessoaRepository {
     private EntityManager em;
 
 
-
     public List<Pessoa> buscarPessoa(){
         Query query = em.createQuery("from Pessoa ");
         return query.getResultList();
@@ -25,6 +24,7 @@ public class PessoaRepository {
     public Pessoa pessoa(Long id){
         return em.find(Pessoa.class,id);
     }
+
 
 
 }

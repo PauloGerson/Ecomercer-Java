@@ -23,6 +23,7 @@ public class Venda implements Serializable {
     private Endereco endereco;
     @ManyToOne
     private Pessoa pessoa;
+
     @OneToMany(mappedBy = "venda",cascade = CascadeType.PERSIST)
     private List<ItemVenda> itens =  new ArrayList<>();
 
@@ -36,6 +37,7 @@ public class Venda implements Serializable {
     }
 
     public LocalDate getDate() {
+
         return date;
     }
 
