@@ -42,6 +42,7 @@ public class Venda implements Serializable {
     }
 
     public void setDate(LocalDate date) {
+
         this.date = date;
     }
 

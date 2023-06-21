@@ -23,6 +23,7 @@ public class VendaController {
 
     @Autowired
     VendaRepository repository;
+
     @Autowired
     Venda venda;
 
@@ -42,12 +43,15 @@ public class VendaController {
 
     public ModelAndView listar(ModelMap model) {
         model.addAttribute("vendas", repository.buscarVendas());
+        model.addAttribute("titulo", "Lista das Vendas");
         return new ModelAndView("vendas/list", model);
     }
 
     @GetMapping("/carrinho")
-    public String carrinho(Venda venda) {
+    public String carrinho(Venda venda, ModelMap model) {
 
+        model.addAttribute("titulo", "Produtos adicionados ao carrinho");
+        modelAddPessoa(model);
         return "carrinho/list";
 
     }
@@ -107,14 +111,16 @@ public class VendaController {
     }
 
     @GetMapping("/entrega/{id}")
-    public String entrega(@PathVariable Long id, ModelMap model){
+    public String entrega(@PathVariable("id") Long id, ModelMap model){
         Endereco e = enderecoRepository.endereco(id);
         modelAddPessoa(model);
         return "carrinho/list";
     }
 
+
+
     private void modelAddPessoa(ModelMap modelMap){
-        modelMap.addAttribute("pessoas", pessoaRepository.buscarPessoa());
+        modelMap.addAttribute("pessoa", pessoaRepository.buscarPessoa());
     }
 
 

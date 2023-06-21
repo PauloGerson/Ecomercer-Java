@@ -71,7 +71,7 @@
                   <th>Selecionar</th>
                 </tr>
                 </thead>
-                <tr th:each="p : ${pessoas}">
+                <tr th:each="p : ${pessoa}">
                   <td hidden="true" th:text="${p.id}"></td>
                   <td th:text="${p.nome}"></td>
                   <td>
@@ -88,11 +88,11 @@
 </form>
   </div>
 
-  <fieldset id="enderecopessoa">
+<!--  <fieldset id="enderecopessoa">
     <div class="container mt-3">
       <h4>Endereços</h4>
       <label class="form-label">Selecione um endereço:</label>
-      <table  th:if="${session.venda.pessoa != null}" class="table table-dark table-hover">
+      <table th:if="${session.venda.pessoa != null}" class="table table-dark table-hover">
         <thead>
         <tr>
           <th>Nome</th>
@@ -101,10 +101,10 @@
         </thead>
         <tr th:each="e : ${session.venda.pessoa.getEndereco()}">
           <td hidden="true" th:text="${e.id}"></td>
-          <td th:text="${e.logradouro}"></td>
+         &lt;!&ndash; <td th:text="${e.logradouro}"></td>&ndash;&gt;
           <td>
             <a class="btn btn-warning"
-               th:href="@{/vendas/entregar/{id}(id=${e.id})}">Selecionar</a>
+               th:href="@{/vendas/entrega/{id}(id=${e.id})}">Selecionar</a>
           </td>
         </tr>
       </table>
@@ -115,7 +115,9 @@
                                                            th:text="${session.venda.endereco.getLogradouro()}"></span></h4>
     </div>
     <hr>
-  </fieldset>
+  </fieldset>-->
+
+
 
 </main>
 

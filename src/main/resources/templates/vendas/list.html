@@ -14,6 +14,8 @@
     <tr>
       <th>Id</th>
       <th>nome</th>
+      <th>Telefone</th>
+      <th>E-mail</th>
       <th>Data</th>
       <th>Total</th>
       <th></th>
@@ -22,7 +24,9 @@
 
     <tr th:each="v : ${vendas}">
       <td th:text="${v.id}"></td>
-      <td th:text="${v.pessoa.nome}"></td>
+      <td th:text="${v.pessoa.getNome()}"></td>
+      <td th:text="${v.pessoa.telefone}"></td>
+      <td th:text="${v.pessoa.email}"></td>
       <td th:text="${v.date}"> </td>
       <td th:text="${v.total()}"></td>
       <td><a  class="btn btn-primary text-light" type="button"  th:href="@{/vendas/itens/{id}(id=${v.id})}"> Detalhes</a> </td>
